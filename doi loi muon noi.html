@@ -1,1 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6e6;
+            color: #ff3366;
+            text-align: center;
+            padding: 20px;
+        }
 
+        header {
+            background-color: #ff99cc;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        main {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            border: 2px solid #ff66b2;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #ff66b2;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #ff3399;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Valentine's Notes</h1>
+    </header>
+    <main>
+        <textarea id="note" placeholder="Write your love notes here..."></textarea>
+        <button id="save-note">Save Note</button>
+    </main>
+    <script>
+        document.getElementById('save-note').addEventListener('click', () => {
+            const note = document.getElementById('note').value;
+            localStorage.setItem('valentineNote', note);
+            alert('Note saved!');
+        });
+
+        // Load saved note on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedNote = localStorage.getItem('valentineNote');
+            if (savedNote) {
+                document.getElementById('note').value = savedNote;
+            }
+        });
+    </script>
+</body>
+</html>
